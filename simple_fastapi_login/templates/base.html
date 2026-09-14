@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Simple Login{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<nav>
+    <a href="/" class="brand">Simple Login</a>
+    <div>
+        {% if user %}
+            <a href="/me">Tài khoản</a>
+            <form method="post" action="/logout" class="inline">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="link-button">Đăng xuất</button>
+            </form>
+        {% else %}
+            <a href="/login-form">Đăng nhập</a>
+            <a href="/register">Đăng ký</a>
+        {% endif %}
+    </div>
+</nav>
+<main>
+{% block content %}{% endblock %}
+</main>
+</body>
+</html>

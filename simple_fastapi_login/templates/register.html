@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Đăng ký{% endblock %}
+{% block content %}
+<section class="card form-card">
+    <h1>Tạo tài khoản</h1>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <form method="post" action="/register">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        <label>Username</label>
+        <input name="username" required>
+        <label>Email</label>
+        <input name="email" type="email" required>
+        <label>Mật khẩu</label>
+        <input name="password" type="password" minlength="8" required>
+        <label>Nhập lại mật khẩu</label>
+        <input name="confirm_password" type="password" minlength="8" required>
+        <button type="submit" class="button">Đăng ký</button>
+    </form>
+</section>
+{% endblock %}
